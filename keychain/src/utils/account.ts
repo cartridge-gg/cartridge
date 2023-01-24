@@ -84,7 +84,7 @@ class Account extends BaseAccount {
       syncing: Date.now(),
     });
 
-    console.log("syncing")
+    console.log("syncing");
 
     try {
       if (this.status === Status.COUNTERFACTUAL) {
@@ -95,7 +95,10 @@ class Account extends BaseAccount {
             status: Status.REGISTERING,
           });
           this.rpc
-            .waitForTransaction(registerTxnHash, 1000, ["ACCEPTED_ON_L1", "ACCEPTED_ON_L2"])
+            .waitForTransaction(registerTxnHash, 1000, [
+              "ACCEPTED_ON_L1",
+              "ACCEPTED_ON_L2",
+            ])
             .then(() => this.sync());
           return;
         }
@@ -110,18 +113,23 @@ class Account extends BaseAccount {
         }
 
         const deployTxnHash = data.contract.deployTransaction.id.split("/")[1];
-        const deployTxnReceipt = await this.rpc.getTransactionReceipt(deployTxnHash);
+        const deployTxnReceipt = await this.rpc.getTransactionReceipt(
+          deployTxnHash,
+        );
 
         // Pending txn so poll for inclusion.
-        if (!('status' in deployTxnReceipt)) {
+        if (!("status" in deployTxnReceipt)) {
           this.status = Status.DEPLOYING;
           Storage.update(this.selector, {
             status: Status.DEPLOYING,
           });
           this.rpc
-            .waitForTransaction(deployTxnHash, 1000, ["ACCEPTED_ON_L1", "ACCEPTED_ON_L2"])
+            .waitForTransaction(deployTxnHash, 1000, [
+              "ACCEPTED_ON_L1",
+              "ACCEPTED_ON_L2",
+            ])
             .then(() => this.sync());
-          return
+          return;
         }
 
         if (deployTxnReceipt.status === "REJECTED") {
@@ -297,7 +305,10 @@ class Account extends BaseAccount {
     return super.estimateInvokeFee(calls, details);
   }
 
-  async verifyMessageHash(hash: string | number | import("bn.js"), signature: Signature): Promise<boolean> {
+  async verifyMessageHash(
+    hash: string | number | import("bn.js"),
+    signature: Signature,
+  ): Promise<boolean> {
     if (number.toBN(signature[0]).cmp(number.toBN(0)) === 0) {
       const keyPair = ec.getKeyPairFromPublicKey(signature[0]);
       return ec.verify(keyPair, number.toBN(hash).toString(), signature);

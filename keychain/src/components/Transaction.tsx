@@ -16,6 +16,8 @@ export interface TransactionProps {
   hash: string;
   chainId: constants.StarknetChainId;
   finalized?: (TransactionState) => void;
+  showChainId?: boolean;
+  initialState?: TransactionState;
 }
 
 export const Transaction = ({
@@ -23,13 +25,17 @@ export const Transaction = ({
   chainId,
   hash,
   finalized,
+  showChainId,
+  initialState,
 }: TransactionProps) => {
-  const [state, setState] = useState<TransactionState>("pending");
+  const [state, setState] = useState<TransactionState>(
+    initialState ?? "pending",
+  );
   const { color, icon } = useMemo(() => getColorIcon(state), [state]);
   const controller = useMemo(() => Controller.fromStore(), []);
 
   useEffect(() => {
-    if (chainId) {
+    if (!initialState && chainId) {
       let result: TransactionState = "pending";
       controller
         .account(chainId)
@@ -59,15 +65,19 @@ export const Transaction = ({
       </HStack>
       <Spacer />
       <HStack spacing="15px">
-        <HStack color="gray.200" spacing="5px">
-          <StarknetIcon boxSize="14px" />
-          <Text color="inherit" fontSize="13px">
-            {chainId === constants.StarknetChainId.MAINNET
-              ? "Mainnet"
-              : "Testnet"}
-          </Text>
-        </HStack>
-        <Divider orientation="vertical" bgColor="gray.500" h="30px" />
+        {showChainId && (
+          <>
+            <HStack color="gray.200" spacing="5px">
+              <StarknetIcon boxSize="14px" />
+              <Text color="inherit" fontSize="13px">
+                {chainId === constants.StarknetChainId.MAINNET
+                  ? "Mainnet"
+                  : "Testnet"}
+              </Text>
+            </HStack>
+            <Divider orientation="vertical" bgColor="gray.500" h="30px" />
+          </>
+        )}
         <Link href={StarkscanUrl(chainId).transaction(hash)} isExternal>
           <LinkIcon boxSize="12px" color="blue.400" />
         </Link>
