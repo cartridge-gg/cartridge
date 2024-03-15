@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "bin/postinstall",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
@@ -13,10 +14,13 @@
     "keychain": "pnpm --filter @cartridge/keychain",
     "controller": "pnpm --filter @cartridge/controller",
     "connector": "pnpm --filter @cartridge/connector",
+    "accouunt-sdk": "pnpm --filter @cartridge/account-sdk",
+    "gen:account-sdk": "crates/account-sdk/bin/build",
     "book": "pnpm --filter @cartridge/docs",
     "ui": "pnpm --filter @cartridge/ui",
     "example:next": "pnpm --filter starknet-react-next",
     "example:get-starknet": "pnpm --filter get-starknet",
+    "example:account-sdk": "pnpm --filter account-sdk",
     "test": "pnpm keychain test",
     "test:ci": "pnpm keychain test:ci"
   },
