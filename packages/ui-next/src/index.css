@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --white: 0 0% 100%;
+    --black: 0 0% 0%;
+    --text-primary: 0 0% 0%;
+    --text-secondary: 210 10% 65%;
+    --text-secondary-accent: 209 11% 50%;
+    --text-error: 7 72% 65%;
+    --text-link-blue: 205 100% 43%;
+
+    --brand-primary: 255 73% 61%;
+    --brand-secondary: 256 47% 48%;
+    --brand-muted: 256 100% 78%;
+    --brand-accent: 255 73% 61%;
+    --brand-accent-highlit: 256 100% 78%;
+    --brand-colorGradient: 256 100% 78%;
+
+    --solid-bg: 220 60% 99%;
+    --solid-primary: 210 22% 96%;
+    --solid-secondary: 210 19% 94%;
+    --solid-tertiary: 214 14% 90%;
+    --solid-accent: 207 15% 85%;
+    --solid-spacer: 210 22% 96%;
+
+    --translucent-soft: 0 0% 0% 0.08;
+    --translucent-md: 0 0% 0% 0.12;
+    --translucent-lg: 0 0% 0% 0.32;
+    --translucent-heavy: 0 0% 0% 0.64;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 50%;
+    --text-secondary-accent: 0 0% 61%;
+    --text-error: 7 72% 65%;
+    --text-link-blue: 205 100% 73%;
+
+    --brand-primary: 44 96% 64%;
+    --brand-secondary: 44 73% 52%;
+    --brand-muted: 46 49% 35%;
+    --brand-accent: 120 57% 78%;
+    --brand-accent-highlit: 120 58% 87%;
+    --brand-colorGradient: 44 96% 64%;
+
+    --solid-bg: 135 8% 9%;
+    --solid-primary: 135 6% 13%;
+    --solid-secondary: 120 5% 15%;
+    --solid-tertiary: 120 6% 17%;
+    --solid-accent: 132 4% 23%;
+    --solid-spacer: 132 14% 7%;
+
+    --translucent-soft: 0 0% 100% 0.08;
+    --translucent-md: 0 0% 100% 0.12;
+    --translucent-lg: 0 0% 100% 0.32;
+    --translucent-heavy: 0 0% 100% 0.64;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
