@@ -18,42 +18,47 @@ const config = {
         "2xl": "1400px",
       },
     },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+    colors: {
+      transparent: "transparent",
+      white: "hsl(var(--white))",
+      black: "hsl(var(--black))",
+      text: {
+        primary: "hsl(var(--text-primary))",
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(var(--text-secondary))",
+          accent: "hsl(var(--text-secondary-accent))"
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        error: "hsl(var(--text-error))"
       },
+      link: {
+        blue: "hsl(var(--text-link-blue))"
+      },
+      brand: {
+        primary: "hsl(var(--brand-primary))",
+        secondary: "hsl(var(--brand-secondary))",
+        muted: "hsl(var(--brand-muted))",
+        accent: {
+          DEFAULT: "hsl(var(--brand-accent))",
+          highlight: "hsl(var(--brand-accent-highlit))"
+        },
+        colorGradient: "hsl(var(--brand-colorGradient))"
+      },
+      solid: {
+        bg: "hsl(var(--solid-bg))",
+        primary: "hsl(var(--solid-primary))",
+        secondary: "hsl(var(--solid-secondary))",
+        tertiary: "hsl(var(--solid-tertiary))",
+        accent: "hsl(var(--solid-accent))",
+        spacer: "hsl(var(--solid-spacer))",
+      },
+      translucent: {
+        soft: "hsla(var(--translucent-soft))",
+        md: "hsla(var(--translucent-md))",
+        lg: "hsla(var(--translucent-lg))",
+        heavy: "hsla(var(--translucent-heavy))",
+      }
+    },
+    extend: {
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
