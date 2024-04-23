@@ -9,5 +9,6 @@
         "@/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "src/**/*.stories.ts", "src/**/*.stories.tsx"]
 }

@@ -1,12 +1,24 @@
 {
   "name": "@cartridge/ui-next",
   "version": "0.1.0",
-  "module": "dist/index.js",
+  "description": "Catridge UI component library",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./themes/*": "./dist/themes/*.css"
+  },
   "scripts": {
-    "dev": "tsc",
-    "build": "tsc",
+    "dev": "tsc && pnpm copyThemes",
+    "build": "tsc && pnpm copyThemes",
+    "copyThemes": "cp -R src/themes dist/themes",
     "format": "prettier ./src --write",
     "lint": "eslint . --ext ts,tsx",
     "storybook": "storybook dev -p 6006",
@@ -63,14 +75,16 @@
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.13",
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.38",
+    "postcss-import": "^16.1.0",
     "storybook": "^8.0.5",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.3",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.5.3"
   }
 }

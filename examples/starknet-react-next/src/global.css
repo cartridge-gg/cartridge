@@ -1,0 +1,7 @@
+@import url("../node_modules/@cartridge/ui-next/dist/themes/default.css");
+@import url("../node_modules/@cartridge/ui-next/dist/themes/dark.css");
+@import url("../node_modules/@cartridge/ui-next/dist/themes/fonts.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
