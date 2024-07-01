@@ -107,6 +107,7 @@ export default class Controller {
         maxFee,
         credentials,
         expiresAt: expiresAt.toString(),
+        chainId: this.account.chainId,
       },
     );
   }
